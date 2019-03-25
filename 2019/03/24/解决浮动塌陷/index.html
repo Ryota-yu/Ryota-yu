@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="如何解决浮动塌陷 啥是浮动塌陷？ 浮动（float）的框可以左右移动，直至它的外边缘碰到包含框或另一个浮动框的外边缘。浮动框不属于文档中的普通流，当一个元素浮动之后，不会影响到块级元素的布局而只会影响内联元素（通常是文本）的排列，文档中的普通流就表现得如同浮动框不存在一样。  如果父元素只包含浮动元素，且父元素未设置高度和宽度的时候，那么它的高度就会踏缩为零。这是因为浮动元素脱离了文档流，包围它们">
+<meta name="description" content="如何解决浮动塌陷">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何解决浮动塌陷">
 <meta property="og:url" content="https://Ryota-yu.github.io/2019/03/24/解决浮动塌陷/index.html">
 <meta property="og:site_name" content="Ryota&#39;s Blog">
-<meta property="og:description" content="如何解决浮动塌陷 啥是浮动塌陷？ 浮动（float）的框可以左右移动，直至它的外边缘碰到包含框或另一个浮动框的外边缘。浮动框不属于文档中的普通流，当一个元素浮动之后，不会影响到块级元素的布局而只会影响内联元素（通常是文本）的排列，文档中的普通流就表现得如同浮动框不存在一样。  如果父元素只包含浮动元素，且父元素未设置高度和宽度的时候，那么它的高度就会踏缩为零。这是因为浮动元素脱离了文档流，包围它们">
+<meta property="og:description" content="如何解决浮动塌陷">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-24T13:59:31.611Z">
+<meta property="og:updated_time" content="2019-03-24T14:08:39.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何解决浮动塌陷">
-<meta name="twitter:description" content="如何解决浮动塌陷 啥是浮动塌陷？ 浮动（float）的框可以左右移动，直至它的外边缘碰到包含框或另一个浮动框的外边缘。浮动框不属于文档中的普通流，当一个元素浮动之后，不会影响到块级元素的布局而只会影响内联元素（通常是文本）的排列，文档中的普通流就表现得如同浮动框不存在一样。  如果父元素只包含浮动元素，且父元素未设置高度和宽度的时候，那么它的高度就会踏缩为零。这是因为浮动元素脱离了文档流，包围它们">
+<meta name="twitter:description" content="如何解决浮动塌陷">
 
 
 
@@ -299,7 +299,7 @@
       
 
       
-        <h2 id="如何解决浮动塌陷"><a href="#如何解决浮动塌陷" class="headerlink" title="如何解决浮动塌陷"></a>如何解决浮动塌陷</h2><hr>
+        <h2 id="如何解决浮动塌陷"><a href="#如何解决浮动塌陷" class="headerlink" title="如何解决浮动塌陷"></a>如何解决浮动塌陷</h2><a id="more"></a>
 <h3 id="啥是浮动塌陷？"><a href="#啥是浮动塌陷？" class="headerlink" title="啥是浮动塌陷？"></a>啥是浮动塌陷？</h3><p> 浮动（float）的框可以左右移动，直至它的外边缘碰到包含框或另一个浮动框的外边缘。浮动框不属于文档中的普通流，当一个元素浮动之后，不会影响到块级元素的布局而只会影响内联元素（通常是文本）的排列，文档中的普通流就表现得如同浮动框不存在一样。  <strong><em>如果父元素只包含浮动元素，且父元素未设置高度和宽度的时候，那么它的高度就会踏缩为零。这是因为浮动元素脱离了文档流，包围它们的父块中没有内容了，所以“塌陷”了。</em></strong></p>
 <h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><p><strong>1. 使用带clear属性的空元素</strong><br>在父块中、浮动元素后使用一个空元素，eg：div标签、br标签、hr标签，并在css中赋予clear:both属性即可清除浮动。</p>
 <p>给空元素设置clear后，因为它的左右两边不能有任何浮动元素，所以空元素下移到浮动元素下方。而空元素又包含在父块中，相当于把父块撑开了，视觉上起到了父块包含浮动元素的效果</p>
