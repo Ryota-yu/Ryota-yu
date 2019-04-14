@@ -88,7 +88,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/FCC32A45AA734212ABDE5352A62E7795?method=download&shareKey=2eba954b8d91c07816e66f53710becdf">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/854951D061CE4823A8C0A37E61345A75?method=download&shareKey=d079f527d8b1b2a88d6de94ae28fa4d4">
-<meta property="og:updated_time" content="2019-03-27T14:19:50.992Z">
+<meta property="og:updated_time" content="2019-04-14T09:02:26.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="子节点childNodes">
 <meta name="twitter:description" content="访问子节点childNodes">
@@ -314,8 +314,20 @@
 <li><p>兼容问题</p>
 <p>在IE运行的结果：ul子节点个数为3</p>
 <p>在其他浏览器运行结果：ul子节点个数为7</p>
-<p><em>原因：</em> 节点之间的空白符，在firefox、chrome、opera、safari浏览器是文本节点，所以IE是3，其它浏览器是7<br><img src="https://note.youdao.com/yws/api/personal/file/854951D061CE4823A8C0A37E61345A75?method=download&amp;shareKey=d079f527d8b1b2a88d6de94ae28fa4d4" alt="image"></p>
+<p><em>原因：</em> 节点之间的空白符，在firefox、chrome、opera、safari浏览器是文本节点，所以IE是3，其它浏览器是7</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/854951D061CE4823A8C0A37E61345A75?method=download&amp;shareKey=d079f527d8b1b2a88d6de94ae28fa4d4" alt="image"></p>
+<p>==解决兼容问题==：<br>Element Traversal API为DOM元素添加了以下5个属性：（都是元素节点）</p>
+<ol>
+<li>childElementCount:返回子元素（不包括文本节点和注释）的个数</li>
+<li>firstElementChild：指向第一个子元素； firstChild的元素版</li>
+<li>lastElementChild：指向最后一个子元素； lastChild的元素版</li>
+<li>previousElementSibling：指向前一个同辈元素； previousSibling的元素版</li>
+<li>nextElementSibling:：指向后一个同辈元素；   nextSibling的元素版</li>
+</ol>
 </li>
+</ul>
+<p>支持Element Traversal规范的浏览器有IE9+、Firefox3+ 、Safari4+、 Chrome和Opera10+。利用这些属性就不必担心空白文本节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">document.write(document.getElementsByTagName(&quot;ul&quot;)[0].childElementCount);   //3</span><br><span class="line"></span><br><span class="line">document.write(document.getElementsByTagName(&quot;ul&quot;)[0].firstElementChild.nodeName);  //LI</span><br></pre></td></tr></table></figure></p>
+<ul>
 <li><p>个人误区</p>
 <p>在第一次学习过程中对七个子节点的理解存在误区。</p>
 <p>认为在li标签中的文本节点（eg：JavaScript）是ul的子节点。但是偶然情况下在运行结果中发现文本结点的Value属性是<strong>空白</strong>，而不是预想的<strong>JavaScript</strong>等文本节点。<br>在查阅之后才理解li标签中的文本节点应该是li标签的子节点，是<strong>ul标签的子节点的子节点</strong>。而li标签之间的空白节点才是ul节点的子节点。这也验证了结果的正确性。</p>
